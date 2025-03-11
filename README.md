@@ -25,4 +25,6 @@ Simple web game to imporove your visual memorizing skills.
     - Improve it over time...
 
 
+
+
 ___Made by Andriy Murhan! (bold italic)___
