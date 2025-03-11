@@ -2,12 +2,16 @@
 
 Simple web game to imporove your visual memorizing skills. 
 
+____
+
 ### The essence of the game is simple:
 1. Get pattern.
 2. Memorize it.
 3. Recreate it.
 4. Move to the next level, increasing difficulty.
 5. Repeat steps 1-4.
+
+____
 
 ## TO-DO Tasks:
 - [ ] __Create html markup(index.html):__
