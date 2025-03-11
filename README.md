@@ -26,5 +26,6 @@ Simple web game to imporove your visual memorizing skills.
 
 
 
+____
 
 ___Made by Andriy Murhan! (bold italic)___
