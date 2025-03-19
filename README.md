@@ -14,7 +14,7 @@ ____
 ____
 
 ## TO-DO Tasks:
-- [ ] __Create html markup(index.html):__
+- [X] __Create html markup(index.html):__
     - Improve it over time...
 - [ ] __Stylize a web page:__
     - [ ] Stylize text and general look.
