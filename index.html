@@ -1,40 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Memory Web Game</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Memory Web Game</title>
+  <link rel="stylesheet" href="./static/style.css" />
 </head>
+
 <body>
-    <div>
-        <!-- Опис гри за допомогою заголовку та тексту -->
-        <h1>Гра на пам'ять "Запам'ятай шаблон"</h1>
-        <p>Запам'ятовуй шаблон, який появився на екрані, і старайся відтворити його! З кожним разом складність підвищується.</p>
-        <button>Детальні правила гри</button>
-        <h3>Нажми пробіл, щоб почати!</h3>
-        <div>
-            <!-- Майбутні блоки для відображенн шаблону гри -->
-            <div></div>
-            <div></div>
-            <div></div>
+  <div class="main-container">
+    <div class="game-description">
+      <h1>Гра "Запам'ятай шаблон"</h1>
+      <p>
+        Запам'ятовуй шаблон, який появився на екрані, і старайся відтворити
+        його! З кожним разом складність підвищується.
+      </p>
+    </div>
+    <div class="userData">
+      <h2>Зареєстрований користувач:</h2>
+      <h4>Ім'я: <span id="username"></span></h4>
+      <h4>Email: <span id="email"></span></h4>
+    </div>
+    <div class="menu-container">
+      <h3 id="menuTrigger">Меню</h3>
+      <div id="menu">
+        <a href="about.html">Детальна інформація</a>
+        <a href="login.html">Реєстрація</a>
+      </div>
+    </div>
+    <h3>Натисни пробіл, щоб почати!</h3>
 
-            <div></div>
-            <div></div>
-            <div></div>
-
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+    <!-- Поле для гри -->
+    <div class="game-grid">
+      <div class="grid-cell"></div>
+      <div class="grid-cell"></div>
+      <div class="grid-cell"></div>
+      <div class="grid-cell"></div>
+      <div class="grid-cell"></div>
+      <div class="grid-cell"></div>
+      <div class="grid-cell"></div>
+      <div class="grid-cell"></div>
+      <div class="grid-cell"></div>
     </div>
 
-    <footer>
-        <h6>Створено Мурганом А. </h6>
-        <div>
-            <a href="img_link"><img src="./static/icons/instagram.png" alt="Instagram icon image!"></a>
-            <a href="git_hub_link"><img src="./static/icons/github.png" alt="GitHub icon image!"></a>
-            <a href="tg_link"><img src="./static/icons/telegram.png" alt="Telegram icon image!"></a>
-        </div>
-    </footer>
+  </div>
+  <script src="./gameLogic.js"></script>
+  <script>
+    const menu = document.querySelector('#menu');
+    document
+      .querySelector('#menuTrigger')
+      .addEventListener('mouseover', () => (menu.style.display = 'block'));
+    document
+      .querySelector('#menuTrigger')
+      .addEventListener('mouseout', () => (menu.style.display = 'none'));
+    menu.addEventListener('mouseover', () => (menu.style.display = 'block'));
+    menu.addEventListener('mouseout', () => (menu.style.display = 'none'));
+
+    window.addEventListener('load', () => {
+      const username = localStorage.getItem('Username');
+      const email = localStorage.getItem('Email');
+
+      document.querySelector('#username').textContent = username;
+      document.querySelector('#email').textContent = email;
+    });
+  </script>
 </body>
+
 </html>

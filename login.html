@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Реєстрація</title>
+  <link rel="stylesheet" href="./static/style.css" />
+</head>
+
+<body>
+  <div class="main-container">
+    <div class="container">
+      <h2>Реєстрація</h2>
+      <form action="/index.html" method="POST" onsubmit="return validForm(this)">
+        <label for="username">Ім’я користувача:</label>
+        <input type="text" id="username" name="username" required placeholder="Введіть ім’я" />
+
+        <label for="email">Електронна пошта:</label>
+        <input type="email" id="email" name="email" required placeholder="example@email.com" />
+
+        <label for="password">Пароль:</label>
+        <!-- <input type="password" id="password" name="password"  placeholder="********"> -->
+        <input type="password" id="password" name="password" required minlength="8"
+          pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@#$%&?_]).{8,}" placeholder="********"
+          title="Мінімум 8 символів, велика літера, цифра, спецсимвол (@#$%&?_)" /> 
+
+        <button type="submit">Зареєструватися</button>
+        <button id="rulesButton">Правила реєстрації</button>
+        <p id="error"></p>
+      </form>
+    </div>
+
+    <div id="dialog">
+      <div id="dialogWindow">
+        <h4>Правила реєстрації:</h4>
+        <ul>
+          <li>
+            Пароль: не менше 8 символів, має містити велику літеру, цифру і
+            символ.
+          </li>
+          <li>Ім'я користувача може бути будь-яким словом або сполученням слів.</li>
+          <li>Email має відповідати міжнародним стандартам: назваEmail@службаEmail(gmail.com,...)</li>
+        </ul>
+        <button id="closeDialog">Зрозумів</button>
+      </div>
+    </div>
+
+
+    <script>
+      document.querySelector('#closeDialog').addEventListener('click', () => {
+        document.querySelector('#dialog').classList.remove('open');
+      });
+
+      document.querySelector("#rulesButton").addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelector('#dialog').classList.add('open');
+      });
+
+      function validForm(form) {
+        const password = form.password.value;
+        const regex = /(?=.*[A-Z])(?=.*\d)(?=.*[@#$%&?_]).{8,}/;
+        const error = document.querySelector('#error');
+
+        if(password.length < 8){
+          error.textContent ="Кількість символів у паролі повина бути більша рівна 8"
+          return false;
+        }
+
+        if (!regex.test(password)) {
+          error.textContent = 'Пароль не відповідає вимогам!';
+          return false;
+        }
+        error.textContent = '';
+
+        window.localStorage.setItem("Username", form.username.value);
+        window.localStorage.setItem("Email", form.email.value);
+
+        return true;
+      }
+
+    </script>
+</body>
+
+</html>
